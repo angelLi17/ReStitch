@@ -2,14 +2,8 @@ import gradio as gr
 import random as rand
 
 def echo(message, history):
-    print(message)
-    print(history)
-    num = rand.randint(0,1)
-    if num == 1:
-        output = "Yes"
-    else :
-        output = "No"
-    return output
+    list = ["Yes", "Yes, definitely", "Most likely", "No", "My sources say no", "Ask again later", "Don't count on it", "Very doubtful", "Outlook not so good"]
+    return rand.choice(list)
 
 chatbot = gr.ChatInterface(echo, type='messages')
 chatbot.launch()
