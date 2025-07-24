@@ -7,7 +7,7 @@ def echo(message, history):
     num = rand.randint(0,1)
     if num >= 0.5:
         output = "Yes"
-    else 
+    else :
         output = "No"
     return output
 
