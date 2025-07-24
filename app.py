@@ -1,9 +1,9 @@
 import gradio as gr
 
 def echo(message, history):
+    print(message)
+    print(history)
     return message
-
-print("Hello World")
 
 chatbot = gr.ChatInterface(echo, type='messages')
 chatbot.launch()
