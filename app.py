@@ -11,13 +11,17 @@ def respond(message, history):
 
     messages.append({"role": "user", "content": message})
 
-    response = client.chat_completion(
+    response = ""
+    
+    for phrases in client.chat_completion(
         messages,
         max_tokens=100,
-        temperature=0.2
-    ) 
-    
-    return response['choices'][0]['message']['content'].strip()
+        temperature=0.2,
+        stream=True
+    ):
+        token = message.choices[0].delta.content
+        response += token
+        yield response
 
 chatbot = gr.ChatInterface(respond, type='messages', examples=["Will it rain tomorrow?", "Will I enjoy my dinner?", "Will I be successful?"], title="8Oracle", description="I see your future...", theme=gr.themes.Glass())
 chatbot.launch()
