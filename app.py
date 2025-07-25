@@ -5,5 +5,5 @@ def magic8ball(message, history):
     list = ["Yes", "Yes, definitely", "Most likely", "No", "My sources say no", "Ask again later", "Don't count on it", "Very doubtful", "Outlook not so good"]
     return rand.choice(list)
 
-chatbot = gr.ChatInterface(magic8ball, type='messages', examples=["Will it rain tomorrow?", "Will I enjoy my dinner?", "Will I be successful?"], title="8Oracle")
+chatbot = gr.ChatInterface(magic8ball, type='messages', examples=["Will it rain tomorrow?", "Will I enjoy my dinner?", "Will I be successful?"], title="8Oracle", description="I see your future...", theme=gr.themes.Glass())
 chatbot.launch()
