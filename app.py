@@ -1,7 +1,7 @@
 import gradio as gr
 from huggingface_hub import InferenceClient
 
-client = InferenceClient("HuggingFaceH4/zephr-7b-beta")
+client = InferenceClient("HuggingFaceH4/zephyr-7b-beta")
 
 def respond(message, history):
     messages = [{"role": "system", "content": "You are a friendly chatbot"}]
