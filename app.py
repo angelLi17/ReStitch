@@ -13,7 +13,7 @@ def respond(message, history):
 
     response = ""
     
-    for phrases in client.chat_completion(
+    for message in client.chat_completion(
         messages,
         max_tokens=100,
         temperature=0.2,
