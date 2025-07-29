@@ -92,7 +92,7 @@ def get_top_chunks(query, chunk_embeddings, text_chunks):
   print(top_indices)
 
   # Create an empty list to store the most relevant chunks
-  # top_chunks = [x for i in top_indices]
+  top_chunks = [] #x for i in top_indices
 
   # Loop through the top indices and retrieve the corresponding text chunks
   for i in top_indices:
@@ -105,9 +105,9 @@ def get_top_chunks(query, chunk_embeddings, text_chunks):
 
 #STEP 6 FROM SEMANTIC SEARCH
 # Call the get_top_chunks function with the original query
-top_results = get_top_chunks("How does water get into the sky", chunk_embeddings, cleaned_chunks) # Complete this line
+# top_results = get_top_chunks("How does water get into the sky", chunk_embeddings, cleaned_chunks) # Complete this line
 # Print the top results
-print(top_results)
+# print(top_results)
 
 
 
@@ -116,7 +116,19 @@ client = InferenceClient("HuggingFaceH4/zephyr-7b-beta")
 
 
 def respond(message, history):
-    messages = [{"role": "system", "content": "You are a friendly chatbot"}]
+    messages = [
+        {"role": "system", 
+         "content": "You are a creative person who tells people how they can upcycle their clothing. You are very kind! Base your response on the provided context: {str_restitch_text}"
+        },
+        {
+            "role": "user",
+            "content": (
+                f"Question: {message}"
+            )
+        }
+    ]
+    best_restitch_chunks = get_top_chunks("How does water get into the sky", chunk_embeddings, cleaned_chunks) # Complete this line
+    str_restitch_chunks = "\n".join(best_physics_chunks)
     
     if history:
         messages.extend(history)
