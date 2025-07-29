@@ -118,7 +118,7 @@ client = InferenceClient("HuggingFaceH4/zephyr-7b-beta")
 def respond(message, history):
     messages = [
         {"role": "system", 
-         "content": "You are a creative person who tells people how they can upcycle their clothing. You are very kind! Base your response on the provided context: {str_restitch_text}"
+            "content": "You are a creative person who tells people how they can upcycle their clothing. You are very kind! Base your response on the provided context: {str_restitch_text}"
         },
         {
             "role": "user",
@@ -127,7 +127,7 @@ def respond(message, history):
             )
         }
     ]
-    best_restitch_chunks = get_top_chunks("How does water get into the sky", chunk_embeddings, cleaned_chunks) # Complete this line
+    best_restitch_chunks = get_top_chunks(message, chunk_embeddings, cleaned_chunks) # Complete this line
     str_restitch_chunks = "\n".join(best_restitch_chunks)
     
     if history:
