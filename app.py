@@ -110,8 +110,7 @@ def get_top_chunks(query, chunk_embeddings, text_chunks):
 # print(top_results)
 
 
-
-client = InferenceClient("HuggingFaceH4/zephyr-7b-beta")
+client = InferenceClient("google/gemma-3-27b-it")
 
 
 
