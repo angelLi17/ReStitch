@@ -126,7 +126,7 @@ def respond(message, history):
             )
         }
     ]
-    best_restitch_chunks = get_top_chunks(history, chunk_embeddings, cleaned_chunks) # Complete this line
+    best_restitch_chunks = get_top_chunks(message, chunk_embeddings, cleaned_chunks) # Complete this line
     str_restitch_chunks = "\n".join(best_restitch_chunks)
     
     if history:
