@@ -8,13 +8,6 @@ import torch
 from transformers import pipeline
 import torch
 
-client = pipeline(
-    "image-text-to-text",
-    model="google/gemma-3-27b-it",
-    device="cuda",
-    torch_dtype=torch.bfloat16
-)
-
 
 
 #STEP 2 FROM SEMANTIC SEARCH
@@ -120,7 +113,7 @@ def get_top_chunks(query, chunk_embeddings, text_chunks):
 # print(top_results)
 
 
-# client = InferenceClient("google/gemma-3-27b-it")
+# client = InferenceClient("Qwen/Qwen2.5-72B-Instruct")
 
 
 
