@@ -118,7 +118,7 @@ client = InferenceClient("HuggingFaceH4/zephyr-7b-beta")
 def respond(message, history):
     messages = [
         {"role": "system", 
-            "content": "You are a creative person who tells people how they can upcycle their clothing in concise language. You are very kind! Base your response on the provided context: {str_restitch_text}"
+            "content": "You are a creative person who tells people how they can upcycle their clothing in concise language. Limit responses to 150 words and always end in a complete sentence. You are very kind! Base your response on the provided context: {str_restitch_text}"
         },
         {
             "role": "user",
@@ -139,7 +139,7 @@ def respond(message, history):
     
     for message in client.chat_completion(
         messages,
-        max_tokens=150,
+        max_tokens=200,
         temperature=0.2,
         stream=True
     ):
