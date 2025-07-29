@@ -5,8 +5,6 @@ from huggingface_hub import InferenceClient
 from sentence_transformers import SentenceTransformer
 import torch
 
-hf-auth-login
-
 from transformers import pipeline
 import torch
 
