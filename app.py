@@ -5,8 +5,6 @@ from huggingface_hub import InferenceClient
 from sentence_transformers import SentenceTransformer
 import torch
 
-from transformers import pipeline
-import torch
 
 
 
@@ -67,7 +65,8 @@ def create_embeddings(text_chunks):
 
 # Call the create_embeddings function and store the result in a new chunk_embeddings variable
 chunk_embeddings = create_embeddings(cleaned_chunks) # Complete this line
-
+print(cleaned_chunks)
+print(chunk_embeddings)
 
 
 #STEP 5 FROM SEMANTIC SEARCH
