@@ -1,8 +1,8 @@
 ---
-title: Mychatbot
-emoji: 📊
+title: ReStitch
+emoji: 🪡
 colorFrom: green
-colorTo: indigo
+colorTo: blue
 sdk: gradio
 sdk_version: 5.38.1
 app_file: app.py
