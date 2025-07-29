@@ -113,7 +113,7 @@ def get_top_chunks(query, chunk_embeddings, text_chunks):
 # print(top_results)
 
 
-# client = InferenceClient("Qwen/Qwen2.5-72B-Instruct")
+client = InferenceClient("Qwen/Qwen2.5-72B-Instruct")
 
 
 
