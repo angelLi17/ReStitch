@@ -118,6 +118,7 @@ client = InferenceClient("Qwen/Qwen2.5-72B-Instruct")
 
 
 def respond(message, history):
+    response = ""
     best_restitch_chunks = get_top_chunks(message, chunk_embeddings, cleaned_chunks) # Complete this line
     str_restitch_chunks = "\n".join(best_restitch_chunks)
     
