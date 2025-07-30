@@ -13,7 +13,8 @@ import torch
 with open("restitch.txt", "r", encoding="utf-8") as file:
   # Read the entire contents of the file and store it in a variable
   restitch_text = file.read()
-print(restitch_text)
+# jasmine: commenting this out bc it's a lot of text to print 
+# print(restitch_text)
 
 
 
@@ -140,7 +141,7 @@ def respond(message, history):
     
     for message in client.chat_completion(
         messages,
-        max_tokens=200,
+        max_tokens=150,
         temperature=0.2,
         stream=True
     ):
