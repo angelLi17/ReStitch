@@ -115,7 +115,21 @@ def get_top_chunks(query, chunk_embeddings, text_chunks):
 
 client = InferenceClient("Qwen/Qwen2.5-72B-Instruct")
 
+desc = "ReStitch is a tool that aids in upcycling old clothes that have been sitting in your closet, untouched, for years." # update this
+tagline = "One Stitch At A Time"
+logo = "logo.png"
+icon = "icon.png"
 
+custom_theme = gr.themes.Ocean(
+    primary_hue="yellow",
+    secondary_hue="rose", 
+    neutral_hue="rose",
+    spacing_size="lg",
+    radius_size="lg",
+    text_size="lg",
+    font=[gr.themes.GoogleFont("Intel One Mono"), "serif"],
+    font_mono=[gr.themes.GoogleFont("Playwrite Magyarország"), "cursive"]
+)
 
 def respond(message, history):
     response = ""
@@ -148,6 +162,35 @@ def respond(message, history):
             response += token
             yield response
 
-chatbot = gr.ChatInterface(
-    fn=respond, type='messages', examples=["How do I repurpose my shirt?", "Is this good for the environment?", "Can you tell what to do with my old pants?"], title="ReStitch", description="Are you out of closet space? Is your closet filled with clothes you never use? Worry not, our chatbot is designed to give you trendy and creative ideas to make something new out of the old.", theme='kioshi/brightly-colored')
-chatbot.launch()
+# chatbot = gr.ChatInterface(
+#     fn=respond, type='messages', examples=["How do I repurpose my shirt?", "Is this good for the environment?", "Can you tell what to do with my old pants?"], title="ReStitch", description="Are you out of closet space? Is your closet filled with clothes you never use? Worry not, our chatbot is designed to give you trendy and creative ideas to make something new out of the old.", theme='kioshi/brightly-colored')
+# chatbot.launch()
+
+#__________________________________________
+with gr.Blocks(theme=custom_theme) as ReStitch:
+    with gr.Row(scale=1):
+        with gr.Column(scale=1):
+            gr.Image(
+        	    value="icon.png", 
+        	    show_label=False, 
+        	    show_share_button = False, 
+        	    show_download_button = False)
+        with gr.Column(scale=4):
+            with gr.Row():
+                gr.Markdown("ReStitch")
+            with gr.Row():
+                gr.Markdown(tagline)
+    with gr.Row(scale=1):
+        gr.Markdown(desc)
+    with gr.Row(scale=3):
+        with gr.Column(scale=4):
+            gr.ChatInterface(
+                fn=respond, 
+                type='messages', 
+                examples=["How do I repurpose my shirt?", "Is this good for the environment?", "Can you tell what to do with my old pants?"], 
+                title="ReStitch", 
+                description="Are you out of closet space? Is your closet filled with clothes you never use? Worry not, our chatbot is designed to give you trendy and creative ideas to make something new out of the old.", 
+            )
+        with gr.Column(scale=1):
+            gr.CheckboxGroup(["Beginner", "Intermediate", "Advanced"], label="What is your crafting skill level? Skills like sewing and tailoring.")
+ReStitch.launch()
