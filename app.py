@@ -183,17 +183,22 @@ def respond(message, history):
 #__________________________________________
 with gr.Blocks(theme=custom_theme) as ReStitch:
     with gr.Row(scale=1):
-        with gr.Column(scale=1):
-            gr.Image(
-        	    value="icon.png", 
-        	    show_label=False, 
-        	    show_share_button = False, 
-        	    show_download_button = False)
-        with gr.Column(scale=4):
-            with gr.Row():
-                gr.Markdown("ReStitch")
-            with gr.Row():
-                gr.Markdown(tagline)
+        gr.Image(
+	    value="ReStitch.png",
+        show_label=False, 
+        show_share_button = False,  
+        show_download_button = False)
+        # with gr.Column(scale=1):
+        #     gr.Image(
+        # 	    value="icon.png", 
+        # 	    show_label=False, 
+        # 	    show_share_button = False, 
+        # 	    show_download_button = False)
+        # with gr.Column(scale=4):
+        #     with gr.Row():
+        #         gr.Markdown("ReStitch")
+        #     with gr.Row():
+        #         gr.Markdown(tagline)
     with gr.Row(scale=3):
         with gr.Column(scale=4):
             gr.ChatInterface(
