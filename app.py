@@ -137,9 +137,7 @@ def respond(message, history):
 
     messages.append({"role": "user", "content": message})
 
-    response = ""
-    
-    for message in client.chat_completion(
+    response = client.chat_completion(
         messages,
         max_tokens=150,
         temperature=0.2,
