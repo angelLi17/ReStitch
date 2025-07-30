@@ -56,18 +56,18 @@ def create_embeddings(text_chunks):
   chunk_embeddings = model.encode(text_chunks, convert_to_tensor=True) # Replace ... with the text_chunks list
 
   # Print the chunk embeddings
-  print(chunk_embeddings)
+  #print(chunk_embeddings)
 
   # Print the shape of chunk_embeddings
-  print(chunk_embeddings.shape)
+  #print(chunk_embeddings.shape)
 
   # Return the chunk_embeddings
   return chunk_embeddings
 
 # Call the create_embeddings function and store the result in a new chunk_embeddings variable
 chunk_embeddings = create_embeddings(cleaned_chunks) # Complete this line
-print(cleaned_chunks)
-print(chunk_embeddings)
+#print(cleaned_chunks)
+#print(chunk_embeddings)
 
 
 #STEP 5 FROM SEMANTIC SEARCH
@@ -118,9 +118,12 @@ client = InferenceClient("Qwen/Qwen2.5-72B-Instruct")
 
 
 def respond(message, history):
+    best_restitch_chunks = get_top_chunks(message, chunk_embeddings, cleaned_chunks) # Complete this line
+    str_restitch_chunks = "\n".join(best_restitch_chunks)
+    
     messages = [
         {"role": "system", 
-            "content": "You are a creative person who tells people how they can upcycle their clothing in concise language. Limit responses to 150 words and always end in a complete sentence. You are very kind! Base your response on the provided context: {str_restitch_text}"
+            "content": f"You are a creative person who tells people how they can upcycle their clothing in concise language. Limit responses to 150 words and always end in a complete sentence. You are very kind! Base your response on the provided context: {str_restitch_text}"
         },
         {
             "role": "user",
@@ -129,23 +132,25 @@ def respond(message, history):
             )
         }
     ]
-    best_restitch_chunks = get_top_chunks(message, chunk_embeddings, cleaned_chunks) # Complete this line
-    str_restitch_chunks = "\n".join(best_restitch_chunks)
+    
     
     if history:
         messages.extend(history)
 
     messages.append({"role": "user", "content": message})
 
-    response = client.chat_completion(
+    stream = client.chat_completion(
         messages,
         max_tokens=150,
         temperature=0.2,
         stream=True
     )
-        #token = message.choices[0].delta.content
-        #response += token
-        #yield response
+    for message in stream:
+        token = message.choices[0].delta.content
+        if token is not None: 
+            response += token
+            yield response
 
-chatbot = gr.ChatInterface(respond, type='messages', examples=["How do I repurpose my shirt?", "Is this good for the environment?", "Can you tell what to do with my old pants?"], title="ReStitch", description="Are you out of closet space? Is your closet filled with clothes you never use? Worry not, our chatbot is designed to give you trendy and creative ideas to make something new out of the old.", theme='kioshi/brightly-colored')
+chatbot = gr.ChatInterface(
+    fn=respond, type='messages', examples=["How do I repurpose my shirt?", "Is this good for the environment?", "Can you tell what to do with my old pants?"], title="ReStitch", description="Are you out of closet space? Is your closet filled with clothes you never use? Worry not, our chatbot is designed to give you trendy and creative ideas to make something new out of the old.", theme='kioshi/brightly-colored')
 chatbot.launch()
