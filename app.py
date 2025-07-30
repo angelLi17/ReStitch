@@ -142,7 +142,7 @@ def respond(message, history):
         max_tokens=150,
         temperature=0.2,
         stream=True
-    ):
+    )
         #token = message.choices[0].delta.content
         #response += token
         #yield response
