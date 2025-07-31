@@ -190,22 +190,15 @@ with gr.Blocks(theme=custom_theme) as ReStitch:
         show_label=False, 
         show_share_button = False,  
         show_download_button = False)
-        # with gr.Column(scale=1):
-        #     gr.Image(
-        # 	    value="icon.png", 
-        # 	    show_label=False, 
-        # 	    show_share_button = False, 
-        # 	    show_download_button = False)
-        # with gr.Column(scale=4):
-        #     with gr.Row():
-        #         gr.Markdown("ReStitch")
-        #     with gr.Row():
-        #         gr.Markdown(tagline)
 level = "Beginner"
     with gr.Row(scale=3):
         with gr.Column(scale=1):
             with gr.Row():
-                level = gr.Dropdown(["Beginner", "Intermediate", "Advanced"], label="Sewing Skill Level", info="What is your crafting skill level? Skills that you might need for upcycling like sewing, tailoring, and pattern constructing.")
+                level = gr.Dropdown(
+                    ["Beginner", "Intermediate", "Advanced"], 
+                    label="Sewing Skill Level", 
+                    info="What is your crafting skill level? Skills that you might need for upcycling like sewing, tailoring, and pattern constructing."
+                )
             #with gr.Row():
                 #spotify playlist here
             #with gr.Row():
@@ -214,7 +207,11 @@ level = "Beginner"
             gr.ChatInterface(
                 fn=respond, 
                 type='messages', 
-                examples=[["How do I repurpose my shirt?", level], ["Teach me how to make a tote from my jeans.", level], ["Can you tell what to do with my old pants?", level]], 
+                examples=[
+                    ["How do I repurpose my shirt?", level], 
+                    ["Teach me how to make a tote from my jeans.", level], 
+                    ["Can you tell what to do with my old pants?", level]
+                ], 
                 title="ReStitch", 
                 additional_inputs = [level],
                 description="Are you out of closet space? Is your closet filled with clothes you never use? Worry not, our chatbot is designed to give you trendy and creative ideas to make something new out of the old.", 
