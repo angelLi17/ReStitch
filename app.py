@@ -164,7 +164,7 @@ def respond(message, history):
 
     stream = client.chat_completion(
         messages,
-        max_tokens=150,
+        max_tokens=200,
         temperature=0.2,
         stream=True
     )
