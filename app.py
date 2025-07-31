@@ -182,7 +182,7 @@ def respond(message, history, level):
 
 
 #__________________________________________
-level = "Beginner"
+
 with gr.Blocks(theme=custom_theme) as ReStitch:
     with gr.Row(scale=1):
         gr.Image(
@@ -207,9 +207,9 @@ with gr.Blocks(theme=custom_theme) as ReStitch:
                 fn=respond, 
                 type='messages', 
                 examples=[
-                    ["How do I repurpose my shirt?", level], 
-                    ["Teach me how to make a tote from my jeans.", level], 
-                    ["Can you tell what to do with my old pants?", level]
+                    ["How do I repurpose my shirt?", "Beginner"], 
+                    ["Teach me how to make a tote from my jeans.", "Intermediate"], 
+                    ["Can you tell what to do with my old pants?", "Beginner"]
                 ], 
                 title="ReStitch", 
                 additional_inputs = [level],
