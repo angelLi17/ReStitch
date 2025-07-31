@@ -190,10 +190,11 @@ def respond(message, history):
 with gr.Blocks(theme=custom_theme) as ReStitch:
     with gr.Row(scale=1):
         gr.Image(
-	    value="ReStitch.png",
-        show_label=False, 
-        show_share_button = False,  
-        show_download_button = False)
+    	    value="ReStitch.png",
+            show_label=False, 
+            show_share_button = False,  
+            show_download_button = False
+        )
     with gr.Row(scale=3):
         with gr.Column(scale=1):
             with gr.Row():
@@ -202,10 +203,13 @@ with gr.Blocks(theme=custom_theme) as ReStitch:
                     label="Sewing Skill Level", 
                     info="What is your crafting skill level? Skills that you might need for upcycling like sewing, tailoring, and pattern constructing."
                 )
-            #with gr.Row():
-                #spotify playlist here
-            #with gr.Row():
-                #example image here
+            with gr.Row():
+                gr.Image(
+            	    value="example.png",
+                    show_label=False, 
+                    show_share_button = False,  
+                    show_download_button = False
+                )
         with gr.Column(scale=4):
             gr.ChatInterface(
                 fn=respond, 
