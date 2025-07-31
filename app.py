@@ -143,14 +143,14 @@ custom_theme = gr.themes.Ocean(
 
 
 #__________________________________________
-def respond(message, history):
+def respond(message, history, level):
     response = ""
     best_restitch_chunks = get_top_chunks(message, chunk_embeddings, cleaned_chunks) # Complete this line
     str_restitch_chunks = "\n".join(best_restitch_chunks)
     
     messages = [
         {"role": "system", 
-        "content": f"You are a creative person who tells people how they can upcycle their clothing in concise language. Make sure that you always end your message with a complete sentence and under 100 words but if it is a step-by-step instruction then 150 words is the limit. You are very kind! Base your response on the provided context: {str_restitch_chunks}"
+        "content": f"You are a creative person who tells people how they can upcycle their clothing in concise language suitable for someone who is at the {level} level for sewing. Make sure that you always end your message with a complete sentence and under 100 words but if it is a step-by-step instruction then 150 words is the limit. You are very kind! Base your response on the provided context: {str_restitch_chunks}"
         },
         {"role": "user", "content": f"Question: {message}"
         }
@@ -200,25 +200,29 @@ with gr.Blocks(theme=custom_theme) as ReStitch:
         #     with gr.Row():
         #         gr.Markdown(tagline)
     with gr.Row(scale=3):
+        with gr.Column(scale=1):
+            with gr.Row():
+                level = gr.Dropdown(["Beginner", "Intermediate", "Advanced"], label="Sewing Skill Level", info="What is your crafting skill level? Skills like sewing and tailoring.")
+            #with gr.Row():
+                #spotify playlist here
+            #with gr.Row():
+                #example image here
         with gr.Column(scale=4):
             gr.ChatInterface(
                 fn=respond, 
                 type='messages', 
                 examples=["How do I repurpose my shirt?", "Is this good for the environment?", "Can you tell what to do with my old pants?"], 
                 title="ReStitch", 
+                additional_inputs = [level]
                 description="Are you out of closet space? Is your closet filled with clothes you never use? Worry not, our chatbot is designed to give you trendy and creative ideas to make something new out of the old.", 
             )
-        with gr.Column(scale=1):
-            gr.CheckboxGroup(["Beginner", "Intermediate", "Advanced"], label="What is your crafting skill level? Skills like sewing and tailoring.")
     
 #__________________________________________
 #ADD SONG PLAYLIST HERE, EXAMPLE IMAGES, AND LINKS TO RESOURCES
     # with gr.Row(scale=1):
-        # with gr.Column(scale=1):
-            #song playlist square shape
-        # with gr.Column(scale=4)
-            #example image canva here
-    # with gr.Row(scale=1)
+        # header
+    # with gr.Row(scale=1):
+        # with gr.Column():
         # resources links here
 #__________________________________________        
     
