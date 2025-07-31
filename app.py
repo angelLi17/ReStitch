@@ -160,6 +160,7 @@ def respond(message, history, level):
     if history:
         messages.extend(history)
 
+
     messages.append({"role": "user", "content": message})
 
     stream = client.chat_completion(
@@ -200,10 +201,11 @@ with gr.Blocks(theme=custom_theme) as ReStitch:
         #         gr.Markdown("ReStitch")
         #     with gr.Row():
         #         gr.Markdown(tagline)
+level = "Beginner"
     with gr.Row(scale=3):
         with gr.Column(scale=1):
             with gr.Row():
-                level = gr.Dropdown(["Beginner", "Intermediate", "Advanced"], label="Sewing Skill Level", info="What is your crafting skill level? Skills like sewing and tailoring.")
+                level = gr.Dropdown(["Beginner", "Intermediate", "Advanced"], label="Sewing Skill Level", info="What is your crafting skill level? Skills that you might need for upcycling like sewing, tailoring, and pattern constructing.")
             #with gr.Row():
                 #spotify playlist here
             #with gr.Row():
@@ -212,7 +214,7 @@ with gr.Blocks(theme=custom_theme) as ReStitch:
             gr.ChatInterface(
                 fn=respond, 
                 type='messages', 
-                examples=[["How do I repurpose my shirt?", "Beginner"], ["Teach me how to make a tote from my jeans.", "Intermediate"], ["Can you tell what to do with my old pants?", "Beginner"]], 
+                examples=[["How do I repurpose my shirt?", level], ["Teach me how to make a tote from my jeans.", level], ["Can you tell what to do with my old pants?", level]], 
                 title="ReStitch", 
                 additional_inputs = [level],
                 description="Are you out of closet space? Is your closet filled with clothes you never use? Worry not, our chatbot is designed to give you trendy and creative ideas to make something new out of the old.", 
