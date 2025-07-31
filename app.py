@@ -134,14 +134,14 @@ spotify_embed_code = """
     """
 
 custom_theme = gr.themes.Ocean(
-    primary_hue="yellow",
-    secondary_hue="rose", 
+    primary_hue="rose",
+    secondary_hue="yellow", 
     neutral_hue="rose",
     spacing_size="lg",
     radius_size="lg",
     text_size="lg",
     font=[gr.themes.GoogleFont("Intel One Mono"), "serif"],
-    font_mono=[gr.themes.GoogleFont("Playwrite Magyarország"), "cursive"]
+    # font_mono=[gr.themes.GoogleFont("Playwrite Magyarország"), "cursive"]
 )
 #__________________________________________
 
