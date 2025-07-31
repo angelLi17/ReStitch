@@ -197,7 +197,7 @@ with gr.Blocks(theme=custom_theme) as ReStitch:
     with gr.Row(scale=3):
         with gr.Column(scale=1):
             with gr.Row():
-                level = gr.Dropdown(
+                gr.Dropdown(
                     ["Beginner", "Intermediate", "Advanced"], 
                     label="Sewing Skill Level", 
                     info="What is your crafting skill level? Skills that you might need for upcycling like sewing, tailoring, and pattern constructing."
