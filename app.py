@@ -15,7 +15,6 @@ import torch
 with open("restitch.txt", "r", encoding="utf-8") as file:
   # Read the entire contents of the file and store it in a variable
   restitch_text = file.read()
-# jasmine: commenting this out bc it's a lot of text to print 
 # print(restitch_text)
 #__________________________________________
 
@@ -198,7 +197,7 @@ with gr.Blocks(theme=custom_theme) as ReStitch:
     with gr.Row(scale=3):
         with gr.Column(scale=1):
             with gr.Row():
-                gr.Dropdown(
+                level = gr.Dropdown(
                     ["Beginner", "Intermediate", "Advanced"], label="Sewing Skill Level", info="What is your crafting skill level? Skills that you might need for upcycling like sewing, tailoring, and pattern constructing."
                 )
             with gr.Row():
