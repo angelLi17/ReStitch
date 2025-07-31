@@ -182,7 +182,7 @@ def respond(message, history, level):
 
 
 #__________________________________________
-
+level = "Beginner"
 with gr.Blocks(theme=custom_theme) as ReStitch:
     with gr.Row(scale=1):
         gr.Image(
@@ -190,7 +190,6 @@ with gr.Blocks(theme=custom_theme) as ReStitch:
         show_label=False, 
         show_share_button = False,  
         show_download_button = False)
-level = "Beginner"
     with gr.Row(scale=3):
         with gr.Column(scale=1):
             with gr.Row():
