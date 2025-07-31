@@ -143,7 +143,7 @@ custom_theme = gr.themes.Ocean(
 
 
 #__________________________________________
-def respond(message, history, level, test):
+def respond(message, history, level):
     response = ""
     best_restitch_chunks = get_top_chunks(message, chunk_embeddings, cleaned_chunks) # Complete this line
     str_restitch_chunks = "\n".join(best_restitch_chunks)
@@ -181,7 +181,7 @@ def respond(message, history, level, test):
 
 
 #__________________________________________
-test="test"
+
 with gr.Blocks(theme=custom_theme) as ReStitch:
     with gr.Row(scale=1):
         gr.Image(
@@ -214,7 +214,8 @@ with gr.Blocks(theme=custom_theme) as ReStitch:
                 type='messages', 
                 examples=["How do I repurpose my shirt?", "Is this good for the environment?", "Can you tell what to do with my old pants?"], 
                 title="ReStitch", 
-                additional_inputs = [level, test],
+                additional_inputs = [level],
+                examples=[["Advanced", "Beginner", "Intermediate"]]
                 description="Are you out of closet space? Is your closet filled with clothes you never use? Worry not, our chatbot is designed to give you trendy and creative ideas to make something new out of the old.", 
             )
     
