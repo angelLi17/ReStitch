@@ -134,7 +134,7 @@ spotify_embed_code = """
     """
 
 custom_theme = gr.themes.Ocean(
-    primary_hue="rose",
+    primary_hue="yellow",
     secondary_hue="yellow", 
     neutral_hue="rose",
     spacing_size="lg",
@@ -199,9 +199,7 @@ with gr.Blocks(theme=custom_theme) as ReStitch:
         with gr.Column(scale=1):
             with gr.Row():
                 gr.Dropdown(
-                    ["Beginner", "Intermediate", "Advanced"], 
-                    label="Sewing Skill Level", 
-                    info="What is your crafting skill level? Skills that you might need for upcycling like sewing, tailoring, and pattern constructing."
+                    ["Beginner", "Intermediate", "Advanced"], label="Sewing Skill Level", info="What is your crafting skill level? Skills that you might need for upcycling like sewing, tailoring, and pattern constructing."
                 )
             with gr.Row():
                 gr.Image(
