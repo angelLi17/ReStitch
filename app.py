@@ -143,14 +143,14 @@ custom_theme = gr.themes.Ocean(
 
 
 #__________________________________________
-def respond(message, history, level):
+def respond(message, history):
     response = ""
     best_restitch_chunks = get_top_chunks(message, chunk_embeddings, cleaned_chunks) # Complete this line
     str_restitch_chunks = "\n".join(best_restitch_chunks)
     
     messages = [
         {"role": "system", 
-        "content": f"You are a creative person who tells people how they can upcycle their clothing in concise language suitable for someone who is at the {level} level for sewing. Make sure that you always end your message with a complete sentence and under 100 words but if it is a step-by-step instruction then 150 words is the limit. You are very kind! Base your response on the provided context: {str_restitch_chunks}"
+        "content": f"You are a creative person who tells people how they can upcycle their clothing in concise language. Make sure that you always end your message with a complete sentence and under 100 words but if it is a step-by-step instruction then 150 words is the limit. You are very kind! Base your response on the provided context: {str_restitch_chunks}" #  suitable for someone who is at the {level} level for sewing
         },
         {"role": "user", "content": f"Question: {message}"
         }
@@ -206,13 +206,14 @@ with gr.Blocks(theme=custom_theme) as ReStitch:
             gr.ChatInterface(
                 fn=respond, 
                 type='messages', 
-                examples=[
-                    ["How do I repurpose my shirt?", "Beginner"], 
-                    ["Teach me how to make a tote from my jeans.", "Intermediate"], 
-                    ["Can you tell what to do with my old pants?", "Beginner"]
-                ], 
+                examples=["How do I repurpose my shirt?", "Teach me how to make a tote from my jeans.", "Intermediate"], "Can you tell what to do with my old pants?", "Beginner"], 
+                # examples=[
+                #     ["How do I repurpose my shirt?", "Beginner"], 
+                #     ["Teach me how to make a tote from my jeans.", "Intermediate"], 
+                #     ["Can you tell what to do with my old pants?", "Beginner"]
+                # ], 
                 title="ReStitch", 
-                additional_inputs = [level],
+                #additional_inputs = [level],
                 description="Are you out of closet space? Is your closet filled with clothes you never use? Worry not, our chatbot is designed to give you trendy and creative ideas to make something new out of the old.", 
             )
     
