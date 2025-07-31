@@ -129,6 +129,10 @@ tagline = "One Stitch At A Time"
 logo = "logo.png"
 icon = "icon.png"
 
+spotify_embed_code = """
+    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0Qc38sGKZeu5wv79Vd3BHT?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    """
+
 custom_theme = gr.themes.Ocean(
     primary_hue="yellow",
     secondary_hue="rose", 
@@ -206,7 +210,7 @@ with gr.Blocks(theme=custom_theme) as ReStitch:
             gr.ChatInterface(
                 fn=respond, 
                 type='messages', 
-                examples=["How do I repurpose my shirt?", "Teach me how to make a tote from my jeans.", "Intermediate"], "Can you tell what to do with my old pants?", "Beginner"], 
+                examples=["How do I repurpose my shirt?", "Teach me how to make a tote from my jeans.", "Intermediate", "Can you tell what to do with my old pants?", "Beginner"], 
                 # examples=[
                 #     ["How do I repurpose my shirt?", "Beginner"], 
                 #     ["Teach me how to make a tote from my jeans.", "Intermediate"], 
@@ -219,8 +223,8 @@ with gr.Blocks(theme=custom_theme) as ReStitch:
     
 #__________________________________________
 #ADD SONG PLAYLIST HERE, EXAMPLE IMAGES, AND LINKS TO RESOURCES
-    # with gr.Row(scale=1):
-        # header
+    with gr.Row(scale=1):
+        gr.HTML(spotify_embed_code)
     # with gr.Row(scale=1):
         # with gr.Column():
         # resources links here
