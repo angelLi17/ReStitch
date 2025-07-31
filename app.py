@@ -150,7 +150,7 @@ def respond(message, history):
     
     messages = [
         {"role": "system", 
-        "content": f"You are a creative person who tells people how they can upcycle their clothing in concise language. Limit responses to 150 words and always end in a complete sentence. You are very kind! Base your response on the provided context: {str_restitch_chunks}"
+        "content": f"You are a creative person who tells people how they can upcycle their clothing in concise language. Make sure that you always end your message with a complete sentence but always keep it under 150 words. You are very kind! Base your response on the provided context: {str_restitch_chunks}"
         },
         {"role": "user", "content": f"Question: {message}"
         }
