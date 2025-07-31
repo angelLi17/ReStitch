@@ -218,7 +218,7 @@ with gr.Blocks(theme=custom_theme) as ReStitch:
                 # ], 
                 title="ReStitch", 
                 #additional_inputs = [level],
-                description="Are you out of closet space? Is your closet filled with clothes you never use? Worry not, our chatbot is designed to give you trendy and creative ideas to make something new out of the old.", 
+                description="Is your closet filled with clothes you never use? Are all your unused clothes sitting in the back of your closet? Worry not, our chatbot is designed to give you trendy and creative ideas to make something new out of the old.", 
             )
     
 #__________________________________________
