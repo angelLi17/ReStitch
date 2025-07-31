@@ -210,7 +210,7 @@ with gr.Blocks(theme=custom_theme) as ReStitch:
             gr.ChatInterface(
                 fn=respond, 
                 type='messages', 
-                examples=["How do I repurpose my shirt?", "Teach me how to make a tote from my jeans.", "Intermediate", "Can you tell what to do with my old pants?", "Beginner"], 
+                examples=["How do I repurpose my shirt?", "Teach me how to make a tote from my jeans.", "Can you tell what to do with my old pants?"], 
                 # examples=[
                 #     ["How do I repurpose my shirt?", "Beginner"], 
                 #     ["Teach me how to make a tote from my jeans.", "Intermediate"], 
