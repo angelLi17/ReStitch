@@ -16,3 +16,5 @@ license: mit
 ###### Methodology and Functionality: kode with klossy ai/ml SF cohort! semantic search, retrieval augmented generation, gradio and chatinterface, transfer learning
 ###### Struggles and Takeaways: a lot of weird issues with getting the chatbot functioning, switched to a new space and then back, problems with having it end its text a complete sentence. lessons: collaboration! to take a break and go for a walk and come back to it
 ###### Brought to you by Rhea, Delilah, and Angel
+
+[![Athena Award Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Faward.athena.hackclub.com%2Fapi%2Fbadge)](https://award.athena.hackclub.com?utm_source=readme)
